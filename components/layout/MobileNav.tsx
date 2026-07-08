@@ -23,7 +23,7 @@ export default function MobileNav() {
               <span className={`text-xl transition-transform ${active ? "scale-110" : ""}`}>
                 {item.emoji}
               </span>
-              <span className="text-[10px] font-medium leading-tight">{item.short}</span>
+              <span className="text-[9px] font-medium leading-tight">{item.short}</span>
             </Link>
           );
         })}

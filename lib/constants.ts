@@ -4,6 +4,7 @@ export const NAV_ITEMS = [
   { href: "/compatibility", label: "궁합", short: "궁합", emoji: "💕", desc: "운명의 짝 찾기" },
   { href: "/dream", label: "꿈해몽", short: "꿈해몽", emoji: "🌙", desc: "꿈의 숨겨진 의미" },
   { href: "/tarot", label: "타로", short: "타로", emoji: "🎴", desc: "타로카드 점치기" },
+  { href: "/lucky", label: "행운의 번호", short: "행운", emoji: "🍀", desc: "사주로 뽑은 이번 주 번호" },
 ] as const;
 
 export const SITE_NAME = "운세마당";
