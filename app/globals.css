@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-surface: #111128;
-  --color-card: #1C1540;
-  --color-card-alt: #231A4A;
-  --color-mystic: #38277A;
-  --color-muted: #C4B5FD;
+  --color-surface: #F8F5FF;
+  --color-card: #FFFFFF;
+  --color-card-alt: #F0EBFF;
+  --color-mystic: #7C3AED;
+  --color-muted: #7C3AED;
   --font-sans: var(--font-noto-kr);
 }
 
 body {
-  background-color: #111128;
-  color: #F5F3FF;
+  background-color: #F8F5FF;
+  color: #1E1040;
   background-image:
-    radial-gradient(ellipse at 15% 50%, rgba(124, 58, 237, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 10%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 15% 50%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 10%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
@@ -24,12 +24,10 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* iPhone safe area for bottom nav */
 .mobile-nav-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* main content padding for mobile bottom nav + safe area */
 @media (max-width: 767px) {
   .main-content {
     padding-bottom: calc(4rem + env(safe-area-inset-bottom));
@@ -40,8 +38,8 @@ body {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #111128; }
-::-webkit-scrollbar-thumb { background: #4C1D95; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #F8F5FF; }
+::-webkit-scrollbar-thumb { background: #C4B5FD; border-radius: 2px; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }

@@ -27,7 +27,7 @@ function Stars({ score }: { score: number }) {
   return (
     <span className="text-amber-400 text-sm tracking-tight">
       {"★".repeat(score)}
-      <span className="text-violet-700">{"★".repeat(5 - score)}</span>
+      <span className="text-violet-200">{"★".repeat(5 - score)}</span>
     </span>
   );
 }
@@ -45,19 +45,19 @@ function FortunePanel({
 }) {
   return (
     <div className="mt-2 animate-[fadeIn_0.3s_ease]">
-      <div className="flex items-center gap-3 mb-5 p-4 bg-card-alt border border-violet-900/40 rounded-2xl">
+      <div className="flex items-center gap-3 mb-5 p-4 bg-violet-50 border border-violet-200 rounded-2xl">
         <span className="text-4xl">{emoji}</span>
         <div>
-          <h2 className="text-lg font-bold text-white">{name}</h2>
-          <p className="text-violet-300 text-xs mt-0.5">{trait}</p>
+          <h2 className="text-lg font-bold text-violet-950">{name}</h2>
+          <p className="text-violet-600 text-xs mt-0.5">{trait}</p>
         </div>
       </div>
 
       <div className="grid grid-cols-5 gap-1.5 mb-5">
         {CATEGORIES.map(({ key, label, emoji: catEmoji }) => (
-          <div key={key} className="bg-card border border-violet-900/40 rounded-xl p-2 text-center">
+          <div key={key} className="bg-white border border-violet-200 rounded-xl p-2 text-center">
             <div className="text-base mb-1">{catEmoji}</div>
-            <div className="text-[10px] text-violet-300 mb-1">{label}</div>
+            <div className="text-[10px] text-violet-600 mb-1">{label}</div>
             <Stars score={fortune.scores[key]} />
           </div>
         ))}
@@ -65,13 +65,13 @@ function FortunePanel({
 
       <div className="space-y-3">
         {CATEGORIES.map(({ key, label, emoji: catEmoji }) => (
-          <div key={key} className="bg-card border border-violet-900/40 rounded-2xl p-4">
+          <div key={key} className="bg-white border border-violet-200 rounded-2xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-base">{catEmoji}</span>
-              <span className="text-sm font-semibold text-white">{label}</span>
+              <span className="text-sm font-semibold text-violet-950">{label}</span>
               <Stars score={fortune.scores[key]} />
             </div>
-            <p className="text-sm text-violet-200 leading-relaxed">{fortune[key]}</p>
+            <p className="text-sm text-violet-700 leading-relaxed">{fortune[key]}</p>
           </div>
         ))}
       </div>
@@ -96,16 +96,14 @@ function ZodiacTab({ today }: { today: string }) {
             className={`flex flex-col items-center gap-1.5 py-4 px-2 rounded-2xl border transition-all active:scale-95 ${
               selected?.id === animal.id
                 ? "bg-violet-600 border-violet-500"
-                : "bg-card border-violet-900/50 hover:border-violet-500/50 hover:bg-card-alt"
+                : "bg-white border-violet-200 hover:border-violet-400 hover:bg-violet-50"
             }`}
           >
             <span className="text-2xl">{animal.emoji}</span>
-            <span
-              className={`text-xs font-bold ${selected?.id === animal.id ? "text-white" : "text-violet-200"}`}
-            >
+            <span className={`text-xs font-bold ${selected?.id === animal.id ? "text-white" : "text-violet-800"}`}>
               {animal.name}띠
             </span>
-            <span className="text-[10px] text-violet-400 leading-tight text-center">
+            <span className={`text-[10px] leading-tight text-center ${selected?.id === animal.id ? "text-violet-200" : "text-violet-500"}`}>
               {animal.years.slice(0, 3).join(" · ")}
             </span>
           </button>
@@ -121,7 +119,7 @@ function ZodiacTab({ today }: { today: string }) {
         />
       ) : (
         <div className="text-center py-12">
-          <p className="text-violet-400 text-sm">내 띠를 선택해주세요 🐾</p>
+          <p className="text-violet-500 text-sm">내 띠를 선택해주세요 🐾</p>
         </div>
       )}
     </div>
@@ -145,16 +143,14 @@ function StarTab({ today }: { today: string }) {
             className={`flex flex-col items-center gap-1.5 py-4 px-2 rounded-2xl border transition-all active:scale-95 ${
               selected?.id === sign.id
                 ? "bg-violet-600 border-violet-500"
-                : "bg-card border-violet-900/50 hover:border-violet-500/50 hover:bg-card-alt"
+                : "bg-white border-violet-200 hover:border-violet-400 hover:bg-violet-50"
             }`}
           >
             <span className="text-2xl">{sign.symbol}</span>
-            <span
-              className={`text-xs font-bold ${selected?.id === sign.id ? "text-white" : "text-violet-200"}`}
-            >
+            <span className={`text-xs font-bold ${selected?.id === sign.id ? "text-white" : "text-violet-800"}`}>
               {sign.name}
             </span>
-            <span className="text-[10px] text-violet-400 leading-tight text-center">
+            <span className={`text-[10px] leading-tight text-center ${selected?.id === sign.id ? "text-violet-200" : "text-violet-500"}`}>
               {sign.startMonth}/{sign.startDay}~
             </span>
           </button>
@@ -170,7 +166,7 @@ function StarTab({ today }: { today: string }) {
         />
       ) : (
         <div className="text-center py-12">
-          <p className="text-violet-400 text-sm">내 별자리를 선택해주세요 ⭐</p>
+          <p className="text-violet-500 text-sm">내 별자리를 선택해주세요 ⭐</p>
         </div>
       )}
     </div>
@@ -195,13 +191,11 @@ function BloodTab({ today }: { today: string }) {
             className={`flex flex-col items-center gap-2 py-7 px-2 rounded-2xl border transition-all active:scale-95 ${
               selectedId === bt.id
                 ? "bg-violet-600 border-violet-500"
-                : "bg-card border-violet-900/50 hover:border-violet-500/50 hover:bg-card-alt"
+                : "bg-white border-violet-200 hover:border-violet-400 hover:bg-violet-50"
             }`}
           >
             <span className="text-3xl">{bt.emoji}</span>
-            <span
-              className={`text-sm font-bold ${selectedId === bt.id ? "text-white" : "text-violet-200"}`}
-            >
+            <span className={`text-sm font-bold ${selectedId === bt.id ? "text-white" : "text-violet-800"}`}>
               {bt.id}형
             </span>
           </button>
@@ -217,7 +211,7 @@ function BloodTab({ today }: { today: string }) {
         />
       ) : (
         <div className="text-center py-12">
-          <p className="text-violet-400 text-sm">내 혈액형을 선택해주세요 🩸</p>
+          <p className="text-violet-500 text-sm">내 혈액형을 선택해주세요 🩸</p>
         </div>
       )}
     </div>
@@ -254,7 +248,7 @@ function MbtiTab({ today }: { today: string }) {
               className={`flex-1 py-3 rounded-xl text-sm font-semibold border transition-all active:scale-95 ${
                 dims[i] === dim.a
                   ? "bg-violet-600 border-violet-500 text-white"
-                  : "bg-card border-violet-900/50 text-violet-400 hover:text-violet-200 hover:border-violet-500/50"
+                  : "bg-white border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-violet-50"
               }`}
             >
               {dim.aLabel}
@@ -264,7 +258,7 @@ function MbtiTab({ today }: { today: string }) {
               className={`flex-1 py-3 rounded-xl text-sm font-semibold border transition-all active:scale-95 ${
                 dims[i] === dim.b
                   ? "bg-violet-600 border-violet-500 text-white"
-                  : "bg-card border-violet-900/50 text-violet-400 hover:text-violet-200 hover:border-violet-500/50"
+                  : "bg-white border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-violet-50"
               }`}
             >
               {dim.bLabel}
@@ -273,12 +267,12 @@ function MbtiTab({ today }: { today: string }) {
         ))}
       </div>
 
-      <div className="text-center mb-5 py-4 bg-card-alt border border-violet-900/40 rounded-2xl">
+      <div className="text-center mb-5 py-4 bg-violet-50 border border-violet-200 rounded-2xl">
         <div className="flex items-center justify-center gap-2 mb-1">
-          <span className="text-3xl font-bold tracking-widest text-white">{mbtiId}</span>
+          <span className="text-3xl font-bold tracking-widest text-violet-950">{mbtiId}</span>
           <span className="text-2xl">{mbtiData.emoji}</span>
         </div>
-        <p className="text-violet-300 text-sm">
+        <p className="text-violet-600 text-sm">
           {mbtiData.nickname} · {mbtiData.trait}
         </p>
       </div>
@@ -301,12 +295,12 @@ export default function TodayClient() {
     <div className="max-w-screen-md mx-auto px-4 py-6">
       <div className="text-center mb-6">
         <div className="text-5xl mb-3">☀️</div>
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">오늘의 운세</h1>
-        <p className="text-violet-300 text-sm">오늘 하루의 운세를 확인하세요</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-violet-950 mb-2">오늘의 운세</h1>
+        <p className="text-violet-600 text-sm">오늘 하루의 운세를 확인하세요</p>
         <p className="text-violet-400 text-xs mt-1">{today.replace(/-/g, ".")} 기준</p>
       </div>
 
-      <div className="flex gap-1.5 bg-card border border-violet-900/40 rounded-2xl p-1.5 mb-6">
+      <div className="flex gap-1.5 bg-white border border-violet-200 rounded-2xl p-1.5 mb-6">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -314,7 +308,7 @@ export default function TodayClient() {
             className={`flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-sm font-semibold transition-all ${
               activeTab === tab.id
                 ? "bg-violet-600 text-white"
-                : "text-violet-400 hover:text-violet-200"
+                : "text-violet-500 hover:text-violet-700"
             }`}
           >
             <span className="text-base">{tab.emoji}</span>

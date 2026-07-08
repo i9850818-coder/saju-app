@@ -33,8 +33,8 @@ function CardFace({
     <div className="flex flex-col items-center gap-2">
       {/* Position label */}
       <div className="text-center h-8 flex flex-col justify-center">
-        <p className="text-violet-300 text-xs font-semibold">{pos}</p>
-        <p className="text-violet-600 text-[10px]">{POSITION_DESC[pos]}</p>
+        <p className="text-violet-700 text-xs font-semibold">{pos}</p>
+        <p className="text-violet-500 text-[10px]">{POSITION_DESC[pos]}</p>
       </div>
 
       {/* 3-D flip card */}
@@ -61,14 +61,14 @@ function CardFace({
           >
             <div className="text-3xl opacity-60">✦</div>
             <div className="w-8 h-px bg-violet-700/50" />
-            <p className="text-violet-600 text-[10px] tracking-widest uppercase">tap</p>
+            <p className="text-violet-500 text-[10px] tracking-widest uppercase">tap</p>
           </div>
 
           {/* ── FRONT ── */}
           <div
             className="absolute inset-0 rounded-2xl select-none
-              bg-gradient-to-b from-card to-card-alt
-              border-2 border-violet-500/60 flex flex-col items-center justify-center gap-2 p-2"
+              bg-gradient-to-b from-white to-violet-50
+              border-2 border-violet-300 flex flex-col items-center justify-center gap-2 p-2"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
@@ -82,11 +82,11 @@ function CardFace({
               {drawn.card.emoji}
             </div>
             <div className="text-center">
-              <p className="text-white text-[11px] font-bold leading-tight">
+              <p className="text-violet-950 text-[11px] font-bold leading-tight">
                 {drawn.card.nameKo}
               </p>
               {drawn.isReversed && (
-                <p className="text-rose-400 text-[10px] mt-0.5">역방향</p>
+                <p className="text-rose-600 text-[10px] mt-0.5">역방향</p>
               )}
             </div>
           </div>
@@ -133,8 +133,8 @@ export default function TarotClient() {
       {/* Hero */}
       <div className="text-center mb-8">
         <div className="text-5xl mb-3">🎴</div>
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">타로</h1>
-        <p className="text-violet-400 text-sm">주제를 선택하고 카드를 뽑아보세요</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-violet-950 mb-2">타로</h1>
+        <p className="text-violet-600 text-sm">주제를 선택하고 카드를 뽑아보세요</p>
       </div>
 
       {/* Topic tabs */}
@@ -152,7 +152,7 @@ export default function TarotClient() {
               className={`flex flex-col items-center gap-1.5 py-4 rounded-2xl border transition-all active:scale-95 ${
                 topic === t
                   ? "bg-violet-600 border-violet-500 text-white"
-                  : "bg-card border-violet-900/50 text-violet-400 hover:border-violet-500/50 hover:text-white"
+                  : "bg-white border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-violet-50"
               }`}
             >
               <span className="text-2xl">{TOPIC_INFO[t].emoji}</span>
@@ -166,7 +166,7 @@ export default function TarotClient() {
       {shuffling && (
         <div className="text-center py-14">
           <div className="text-5xl mb-4 animate-spin">🔮</div>
-          <p className="text-violet-400 text-sm">카드를 섞는 중...</p>
+          <p className="text-violet-600 text-sm">카드를 섞는 중...</p>
         </div>
       )}
 
@@ -181,7 +181,7 @@ export default function TarotClient() {
 
           {/* Hint */}
           {!allFlipped && (
-            <p className="text-center text-violet-600 text-xs mt-3">
+            <p className="text-center text-violet-500 text-xs mt-3">
               {flippedCount === 0
                 ? "카드를 하나씩 탭해서 운명을 확인하세요 ✦"
                 : `${flippedCount}/3 공개 · 나머지 카드를 탭하세요`}
@@ -192,11 +192,11 @@ export default function TarotClient() {
           {allFlipped && topic && (
             <div className="mt-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="flex-1 h-px bg-violet-900/50" />
-                <span className="text-violet-400 text-xs font-semibold tracking-wide">
+                <div className="flex-1 h-px bg-violet-200" />
+                <span className="text-violet-600 text-xs font-semibold tracking-wide">
                   📖 {topic} 타로 리딩
                 </span>
-                <div className="flex-1 h-px bg-violet-900/50" />
+                <div className="flex-1 h-px bg-violet-200" />
               </div>
 
               <div className="space-y-4">
@@ -208,20 +208,20 @@ export default function TarotClient() {
                   return (
                     <div
                       key={i}
-                      className="bg-card border border-violet-900/40 rounded-2xl p-4"
+                      className="bg-white border border-violet-200 rounded-2xl p-4"
                     >
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-2xl">{drawn.card.emoji}</span>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-violet-500 text-xs bg-violet-900/30 px-2 py-0.5 rounded-full">
+                            <span className="text-violet-600 text-xs bg-violet-100 px-2 py-0.5 rounded-full">
                               {POSITIONS[i]}
                             </span>
-                            <span className="text-white text-sm font-bold">
+                            <span className="text-violet-950 text-sm font-bold">
                               {drawn.card.nameKo}
                             </span>
                             {drawn.isReversed && (
-                              <span className="text-rose-400 text-[10px] bg-rose-900/30 px-1.5 py-0.5 rounded-full">
+                              <span className="text-rose-600 text-[10px] bg-rose-100 px-1.5 py-0.5 rounded-full">
                                 역방향
                               </span>
                             )}
@@ -230,7 +230,7 @@ export default function TarotClient() {
                             {drawn.card.keywords.slice(0, 3).map((kw) => (
                               <span
                                 key={kw}
-                                className="text-[10px] text-violet-500 bg-violet-900/20 px-1.5 py-0.5 rounded-full"
+                                className="text-[10px] text-violet-600 bg-violet-100 px-1.5 py-0.5 rounded-full"
                               >
                                 {kw}
                               </span>
@@ -238,7 +238,7 @@ export default function TarotClient() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-sm text-violet-200 leading-relaxed">{text}</p>
+                      <p className="text-sm text-violet-800 leading-relaxed">{text}</p>
                     </div>
                   );
                 })}
@@ -248,7 +248,7 @@ export default function TarotClient() {
               <div className="mt-8 text-center">
                 <button
                   onClick={() => draw(topic)}
-                  className="px-6 py-3 rounded-2xl bg-card border border-violet-700/50 text-violet-400 hover:text-white hover:border-violet-500 text-sm transition-all active:scale-95"
+                  className="px-6 py-3 rounded-2xl bg-white border border-violet-300 text-violet-600 hover:text-violet-900 hover:border-violet-500 hover:bg-violet-50 text-sm transition-all active:scale-95"
                 >
                   🔄 다시 뽑기
                 </button>

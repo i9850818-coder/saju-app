@@ -36,24 +36,24 @@ export default function DreamClient() {
       {/* Hero */}
       <div className="text-center mb-8">
         <div className="text-5xl mb-3">🌙</div>
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">꿈해몽</h1>
-        <p className="text-violet-400 text-sm">꿈에 나타난 키워드를 검색하거나 카테고리를 선택하세요</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-violet-950 mb-2">꿈해몽</h1>
+        <p className="text-violet-600 text-sm">꿈에 나타난 키워드를 검색하거나 카테고리를 선택하세요</p>
       </div>
 
       {/* Search */}
       <div className="relative mb-4">
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-violet-500">🔍</span>
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-violet-400">🔍</span>
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="꿈 키워드 검색... (예: 뱀, 이빨, 홍수)"
-          className="w-full bg-card border border-violet-900/50 focus:border-violet-500 rounded-2xl pl-10 pr-10 py-3.5 text-white placeholder-violet-600 outline-none transition-colors text-sm"
+          className="w-full bg-white border border-violet-200 focus:border-violet-500 rounded-2xl pl-10 pr-10 py-3.5 text-violet-950 placeholder-violet-400 outline-none transition-colors text-sm"
         />
         {search && (
           <button
             onClick={() => setSearch("")}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-violet-500 hover:text-violet-300 transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-violet-400 hover:text-violet-700 transition-colors"
             aria-label="검색어 지우기"
           >
             ✕
@@ -68,7 +68,7 @@ export default function DreamClient() {
           className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeCategory === "전체"
               ? "bg-violet-600 text-white"
-              : "bg-card border border-violet-900/50 text-violet-400 hover:text-white"
+              : "bg-white border border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-violet-50"
           }`}
         >
           🔮 전체
@@ -80,7 +80,7 @@ export default function DreamClient() {
             className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               activeCategory === cat
                 ? "bg-violet-600 text-white"
-                : "bg-card border border-violet-900/50 text-violet-400 hover:text-white"
+                : "bg-white border border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-violet-50"
             }`}
           >
             {CATEGORY_EMOJI[cat]} {cat}
@@ -102,13 +102,13 @@ export default function DreamClient() {
             <button
               key={entry.id}
               onClick={() => setSelected(entry)}
-              className="group bg-card hover:bg-card-alt border border-violet-900/50 hover:border-violet-500/50 rounded-2xl p-3 flex flex-col items-center gap-1.5 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-900/30 active:scale-95"
+              className="group bg-white hover:bg-violet-50 border border-violet-200 hover:border-violet-400 rounded-2xl p-3 flex flex-col items-center gap-1.5 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-200/60 active:scale-95"
             >
               <span className="text-3xl">{entry.emoji}</span>
-              <span className="text-[11px] font-medium text-violet-300 group-hover:text-white leading-tight text-center">
+              <span className="text-[11px] font-medium text-violet-800 group-hover:text-violet-950 leading-tight text-center">
                 {entry.keyword}
               </span>
-              <span className="text-[10px] text-violet-600 leading-tight text-center line-clamp-1">
+              <span className="text-[10px] text-violet-500 leading-tight text-center line-clamp-1">
                 {entry.scenarios.length}가지 해몽
               </span>
             </button>
@@ -117,8 +117,8 @@ export default function DreamClient() {
       ) : (
         <div className="text-center py-16">
           <div className="text-5xl mb-3">🔍</div>
-          <p className="text-violet-400 font-medium">검색 결과가 없어요</p>
-          <p className="text-violet-600 text-sm mt-1">다른 키워드로 검색해 보세요</p>
+          <p className="text-violet-700 font-medium">검색 결과가 없어요</p>
+          <p className="text-violet-500 text-sm mt-1">다른 키워드로 검색해 보세요</p>
         </div>
       )}
 
