@@ -37,7 +37,7 @@ function FortunePanel({ animal, fortune }: { animal: ZodiacAnimal; fortune: Dail
         <span className="text-4xl">{animal.emoji}</span>
         <div>
           <h2 className="text-lg font-bold text-white">{animal.name}띠 오늘의 운세</h2>
-          <p className="text-violet-500 text-xs mt-0.5">{animal.trait}</p>
+          <p className="text-violet-300 text-xs mt-0.5">{animal.trait}</p>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ function FortunePanel({ animal, fortune }: { animal: ZodiacAnimal; fortune: Dail
         {CATEGORIES.map(({ key, label, emoji }) => (
           <div key={key} className="bg-card border border-violet-900/40 rounded-xl p-2 text-center">
             <div className="text-base mb-1">{emoji}</div>
-            <div className="text-[10px] text-violet-500 mb-1">{label}</div>
+            <div className="text-[10px] text-violet-300 mb-1">{label}</div>
             <Stars score={fortune.scores[key]} />
           </div>
         ))}
@@ -94,8 +94,8 @@ export default function ZodiacClient() {
       <div className="text-center mb-8">
         <div className="text-5xl mb-3">🐉</div>
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">띠별 운세</h1>
-        <p className="text-violet-400 text-sm">내 띠를 선택하면 오늘의 운세를 알 수 있어요</p>
-        <p className="text-violet-600 text-xs mt-1">{today.replace(/-/g, ".")} 기준</p>
+        <p className="text-violet-300 text-sm">내 띠를 선택하면 오늘의 운세를 알 수 있어요</p>
+        <p className="text-violet-400 text-xs mt-1">{today.replace(/-/g, ".")} 기준</p>
       </div>
 
       {/* Animal grid */}
@@ -111,10 +111,10 @@ export default function ZodiacClient() {
             }`}
           >
             <span className="text-2xl">{animal.emoji}</span>
-            <span className={`text-xs font-bold ${selected?.id === animal.id ? "text-white" : "text-violet-300"}`}>
+            <span className={`text-xs font-bold ${selected?.id === animal.id ? "text-white" : "text-violet-200"}`}>
               {animal.name}띠
             </span>
-            <span className="text-[10px] text-violet-600 leading-tight text-center">
+            <span className="text-[10px] text-violet-400 leading-tight text-center">
               {animal.years.slice(0, 3).join(" · ")}
             </span>
           </button>
@@ -130,7 +130,7 @@ export default function ZodiacClient() {
 
       {!selected && (
         <div className="text-center py-12">
-          <p className="text-violet-600 text-sm">위에서 내 띠를 선택해주세요 🐾</p>
+          <p className="text-violet-400 text-sm">위에서 내 띠를 선택해주세요 🐾</p>
         </div>
       )}
     </div>
