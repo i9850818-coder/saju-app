@@ -53,17 +53,16 @@ export default function HomePage() {
           </Link>
         ))}
 
-        {/* 행운의 번호 — special card */}
+        {/* 행운의 번호 */}
         <Link
           href="/lucky"
-          className="group relative overflow-hidden bg-card hover:bg-card-alt border border-amber-700/30 hover:border-amber-500/50 rounded-2xl p-4 md:p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-900/20"
+          className="group bg-card hover:bg-card-alt border border-violet-900/50 hover:border-violet-600/40 rounded-2xl p-4 md:p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-900/30"
         >
-          <div className="absolute top-0 right-0 w-20 h-20 bg-amber-500/5 rounded-full -translate-y-6 translate-x-6 group-hover:bg-amber-500/10 transition-colors" />
           <div className="text-3xl mb-3">🍀</div>
-          <h2 className="font-semibold text-white text-sm md:text-base mb-1 group-hover:text-amber-200 transition-colors">
+          <h2 className="font-semibold text-white text-sm md:text-base mb-1 group-hover:text-violet-200 transition-colors">
             행운의 번호
           </h2>
-          <p className="text-xs text-amber-600/80">사주로 뽑은 이번 주 번호</p>
+          <p className="text-xs text-violet-400">사주로 뽑은 이번 주 번호</p>
         </Link>
       </section>
 
