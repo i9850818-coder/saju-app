@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -11,6 +11,14 @@ const notoSansKR = Noto_Sans_KR({
   variable: "--font-noto-kr",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#0B0B1A",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +33,11 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "운세마당",
+  },
 };
 
 export default function RootLayout({
@@ -34,7 +47,7 @@ export default function RootLayout({
     <html lang="ko" className={notoSansKR.variable}>
       <body className="min-h-screen flex flex-col antialiased">
         <Header />
-        <main className="flex-1 pb-16 md:pb-0">{children}</main>
+        <main className="flex-1 main-content">{children}</main>
         <Footer />
         <MobileNav />
       </body>
