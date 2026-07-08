@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
+import ZodiacClient from "@/components/zodiac/ZodiacClient";
 
 export const metadata: Metadata = {
   title: "띠별 운세",
-  description: "12띠별 오늘의 운세를 확인하세요.",
+  description:
+    "쥐·소·호랑이·토끼·용·뱀·말·양·원숭이·닭·개·돼지 12띠별 오늘의 운세. 총운·연애운·직장운·금전운·건강운 무료 제공.",
+  keywords: ["띠별운세", "12띠운세", "오늘의운세", "쥐띠", "소띠", "호랑이띠"],
 };
 
 export default function ZodiacPage() {
-  return (
-    <div className="max-w-screen-md mx-auto px-4 py-16 text-center">
-      <div className="text-6xl mb-5">🐉</div>
-      <h1 className="text-2xl font-bold text-white mb-3">띠별 운세</h1>
-      <p className="text-violet-400 mb-2">12띠별 오늘의 운세</p>
-      <p className="text-sm text-violet-600">준비 중입니다. 곧 만나보실 수 있어요!</p>
-    </div>
-  );
+  return <ZodiacClient />;
 }
