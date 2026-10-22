@@ -6,19 +6,22 @@ import { SIJU_OPTIONS } from "@/data/compatibility";
 // ─── 타입 ────────────────────────────────────────────────────────────
 type Pillar = { stem: string; branch: string; combined: string };
 
+type Interpretation = {
+  condition_value: string;
+  category: string;
+  title: string;
+  content: string;
+  summary: string;
+  weight: number;
+};
+
 type SajuResult = {
   pillars: Record<"year" | "month" | "day" | "hour", Pillar>;
   five_elements: Record<"wood" | "fire" | "earth" | "metal" | "water", number>;
   element_tags: string[];
   birth_info: { date: string; time: string; solar_time: string | null; siju: string };
-  interpretations: Array<{
-    condition_value: string;
-    category: string;
-    title: string;
-    content: string;
-    summary: string;
-    weight: number;
-  }>;
+  interpretations: Interpretation[];
+  day_pillar_interpretations: Interpretation[];
 };
 
 // ─── 상수 ────────────────────────────────────────────────────────────
@@ -229,6 +232,8 @@ function CategoryTab({
   const catItems = result.interpretations.filter(
     (i) => i.category === activeTab && !i.condition_value.endsWith("_balanced")
   );
+  const dayItem = result.day_pillar_interpretations?.find((i) => i.category === activeTab);
+  const dayStemEl = ELEMENTS[STEM_TO_ELEMENT[result.pillars.day.stem]];
 
   return (
     <div className="bg-white border border-violet-200 rounded-2xl overflow-hidden">
@@ -252,7 +257,17 @@ function CategoryTab({
         })}
       </div>
       <div className="p-4 space-y-3 animate-[fadeIn_0.3s_ease]">
+        {dayItem && (
+          <div className={`rounded-xl p-3.5 ${dayStemEl?.lightBg ?? "bg-violet-50"}`}>
+            <p className={`text-xs font-bold mb-1.5 ${dayStemEl?.textColor ?? "text-violet-700"}`}>
+              {dayItem.condition_value}일주의 기질
+            </p>
+            <p className="text-sm font-semibold text-violet-950 leading-relaxed mb-1.5">{dayItem.summary}</p>
+            <p className="text-sm text-violet-800 leading-relaxed">{dayItem.content}</p>
+          </div>
+        )}
         {catItems.length === 0 ? (
+          dayItem ? null :
           <p className="text-sm text-violet-400 text-center py-4">해석 데이터가 없습니다.</p>
         ) : (
           catItems.map((item) => {
